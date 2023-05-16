@@ -4,13 +4,13 @@
 			"category_img_url":"https://www.thoughtco.com/thmb/bU-NkdPf6fNqZod00sVvgZChQhU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-sb10066792a-001-583b1d6f5f9b58d5b1b83b0f.jpg",
 			"category_data":[
 				{
-					"Tile":" Beverages / Drinks My Title1",
-					"Description":"Beverages / Drinks My Description1",
+					"title":" Beverages / Drinks My title1",
+					"description":"Beverages / Drinks My Description1",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				},
 				{
-					"Tile":"Beverages / Drinks My Title 2",
-					"Description":"Beverages / Drinks My Description 2",
+					"title":"Beverages / Drinks My title 2",
+					"description":"Beverages / Drinks My Description 2",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				}
 			]
@@ -20,13 +20,13 @@
 			"category_img_url":"https://www.thoughtco.com/thmb/bU-NkdPf6fNqZod00sVvgZChQhU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-sb10066792a-001-583b1d6f5f9b58d5b1b83b0f.jpg",
 			"category_data":[
 				{
-					"Tile":" Dairy My Title1",
-					"Description":"Dairy My Description1",
+					"title":" Dairy My title1",
+					"description":"Dairy My Description1",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				},
 				{
-					"Tile":"Dairy My Title 2",
-					"Description":"Dairy My Description 2",
+					"title":"Dairy My title 2",
+					"description":"Dairy My Description 2",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				}
 			]
@@ -36,13 +36,13 @@
 			"category_img_url":"https://www.thoughtco.com/thmb/bU-NkdPf6fNqZod00sVvgZChQhU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-sb10066792a-001-583b1d6f5f9b58d5b1b83b0f.jpg",
 			"category_data":[
 				{
-					"Tile":" Dessert My Title1",
-					"Description":"Dessert My Description1",
+					"title":" Dessert My title1",
+					"description":"Dessert My Description1",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				},
 				{
-					"Tile":"Dessert My Title 2",
-					"Description":"Dessert My Description 2",
+					"title":"Dessert My title 2",
+					"description":"Dessert My Description 2",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				}
 			]
@@ -52,13 +52,13 @@
 			"category_img_url":"https://www.thoughtco.com/thmb/bU-NkdPf6fNqZod00sVvgZChQhU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-sb10066792a-001-583b1d6f5f9b58d5b1b83b0f.jpg",
 			"category_data":[
 				{
-					"Tile":" Fruit My Title1",
-					"Description":"Fruit My Description1",
+					"title":" Fruit My title1",
+					"description":"Fruit My Description1",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				},
 				{
-					"Tile":"Fruit My Title 2",
-					"Description":"Fruit My Description 2",
+					"title":"Fruit My title 2",
+					"description":"Fruit My Description 2",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				}
 			]
@@ -68,13 +68,13 @@
 			"category_img_url":"https://www.thoughtco.com/thmb/bU-NkdPf6fNqZod00sVvgZChQhU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-sb10066792a-001-583b1d6f5f9b58d5b1b83b0f.jpg",
 			"category_data":[
 				{
-					"Tile":" Grains / Starches My Title1",
-					"Description":"Grains / Starches My Description1",
+					"title":" Grains / Starches My title1",
+					"description":"Grains / Starches My Description1",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				},
 				{
-					"Tile":"Grains / Starches My Title 2",
-					"Description":"Grains / Starches My Description 2",
+					"title":"Grains / Starches My title 2",
+					"description":"Grains / Starches My Description 2",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				}
 			]
@@ -84,13 +84,13 @@
 			"category_img_url":"https://www.thoughtco.com/thmb/bU-NkdPf6fNqZod00sVvgZChQhU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-sb10066792a-001-583b1d6f5f9b58d5b1b83b0f.jpg",
 			"category_data":[
 				{
-					"Tile":" Meat / Fish My Title1",
-					"Description":"Meat / Fish My Description1",
+					"title":" Meat / Fish My title1",
+					"description":"Meat / Fish My Description1",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				},
 				{
-					"Tile":"Meat / Fish My Title 2",
-					"Description":"Meat / Fish My Description 2",
+					"title":"Meat / Fish My title 2",
+					"description":"Meat / Fish My Description 2",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				}
 			]
@@ -100,13 +100,13 @@
 			"category_img_url":"https://www.thoughtco.com/thmb/bU-NkdPf6fNqZod00sVvgZChQhU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-sb10066792a-001-583b1d6f5f9b58d5b1b83b0f.jpg",
 			"category_data":[
 				{
-					"Tile":" Vegetables My Title1",
-					"Description":"Vegetables My Description1",
+					"title":" Vegetables My title1",
+					"description":"Vegetables My Description1",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				},
 				{
-					"Tile":"Vegetables My Title 2",
-					"Description":"Vegetables My Description 2",
+					"title":"Vegetables My title 2",
+					"description":"Vegetables My Description 2",
 					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
 				}
 			]
