@@ -1,14 +1,14 @@
 {
 	"Curry":[
-	{
-		"Tile":"My Title1",
-		"Description":"My Description1",
-		"img_url":"www.google.com1"
-	},
-	{
-		"Tile":"My Title 2",
-		"Description":"My Description 2",
-		"img_url":"www.google.com"
-	}
+		{
+			"Tile":"My Title1",
+			"Description":"My Description1",
+			"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
+		},
+		{
+			"Tile":"My Title 2",
+			"Description":"My Description 2",
+			"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
+		}
 	]
 }
