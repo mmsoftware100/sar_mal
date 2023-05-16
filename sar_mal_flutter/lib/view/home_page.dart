@@ -26,8 +26,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow,
-        title: Text("စားမယ်"),
+        backgroundColor: Colors.orange,
+        title: Center(child: Text("စားမယ်")),
       ),
       body:Provider.of<DataProvider>(context,listen: true).DataReturnStatus == false ? ListView(
         children: [
