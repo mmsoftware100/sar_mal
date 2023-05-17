@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import '../constant/util.dart';
-import '../model/data_model.dart';
+import '../../constant/util.dart';
+import '../../model/data_model.dart';
 
 class FoodCard extends StatefulWidget {
   final DataModel food;
