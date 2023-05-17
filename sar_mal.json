@@ -1,6 +1,6 @@
 [
 		{
-			"category_name":"Beverages / Drinks",
+			"category_name":"ဖျော်ရည် / အအေး",
 			"category_img_url":"https://i.ibb.co/HtnGrKy/Beverage-webinar-today-What-drinks-do-consumers-want.jpg",
 			"category_data":[
 				{
@@ -16,7 +16,7 @@
 			]
 		},
 		{
-			"category_name":"Dairy",
+			"category_name":"နို့ထွက်ပစ္စည်း",
 			"category_img_url":"https://i.ibb.co/7SmKDKP/R.jpg",
 			"category_data":[
 				{
@@ -32,7 +32,7 @@
 			]
 		},
 		{
-			"category_name":"Dessert",
+			"category_name":"အချိုပွဲ",
 			"category_img_url":"https://i.ibb.co/3k8GG26/Top-10-August-Recipes-Dessert-Recipes.jpg",
 			"category_data":[
 				{
@@ -48,7 +48,7 @@
 			]
 		},
 		{
-			"category_name":"Fruit",
+			"category_name":"သစ်သီးဝလံ",
 			"category_img_url":"https://i.ibb.co/GR9bwjk/OIP.jpg",
 			"category_data":[
 				{
@@ -64,7 +64,7 @@
 			]
 		},
 		{
-			"category_name":"Grains / Starches",
+			"category_name":"ဆန် / ဂျုံ / ပြောင်း အစားအစာ",
 			"category_img_url":"https://i.ibb.co/Chf6T2m/R-1.jpg",
 			"category_data":[
 				{

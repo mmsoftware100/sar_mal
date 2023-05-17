@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Provider.of<DataProvider>(context,listen: true).DataReturnStatus == false ? null : Colors.grey,
       appBar: AppBar(
         backgroundColor: Colors.orange,
-        title: Center(child: Text("SAR MAL")),
+        title: Center(child: Text("စားမယ်/သောက်မယ်",style:TextStyle(fontSize:18))),
       ),
       body:Provider.of<DataProvider>(context,listen: true).DataReturnStatus == false ? Padding(
         padding: const EdgeInsets.all(150),
