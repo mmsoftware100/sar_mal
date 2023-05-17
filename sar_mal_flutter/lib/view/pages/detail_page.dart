@@ -52,13 +52,21 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ),
           ),
-          Text(
-            widget.categoryData.title,
-            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              widget.categoryData.title,
+              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),
+            ),
           ),
-          Text(
-            widget.categoryData.description,
-            style: TextStyle(fontSize: 14),
+          Divider(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              widget.categoryData.description,
+              style: TextStyle(fontSize: 20,),
+              textAlign: TextAlign.justify,
+            ),
           )
         ],
       ),
