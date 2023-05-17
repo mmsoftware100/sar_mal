@@ -119,7 +119,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          placeholder: (context, url) => CircularProgressIndicator(),
+          placeholder: (context, url) => Padding(
+            padding: const EdgeInsets.all(100.0),
+            child: Center(child: CircularProgressIndicator()),
+          ),
           errorWidget: (context, url, error) => Icon(Icons.error),
         ),
       ),
