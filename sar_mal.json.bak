@@ -80,9 +80,54 @@
 			]
 		},
 		{
-			"category_name":"Meat / Fish",
+			"category_name":"အသားဟင်း / ငါးဟင်း",
 			"category_img_url":"https://i.ibb.co/q7V4GKr/R-2.jpg",
 			"category_data":[
+				{
+					"title":" ဝက်သားနီချက်",
+					"description":"ဝက်သားကိုဆေးကြောသန့်စင်ပြီးဆားအရသာမှုန့် abc ပဲငံပြာရည်ရယ်ဗမာငံပြာရည်နဲနဲထည့်ပြီးတနာရီလောက်နှပ်ထားပါ / ဝက်သားပေါ်ကြည့်ပြီးဆီထည့်ပါအဆီအခေါက်ဆိုဆီလျော့ထည့်ပြီးအသားဆိုပုံမှန်အတိုင်းထည့်ပါဆီကျက်ရင်သကြားအညိုအနဲငယ်ထည့်ပါအရောင်နီညိုလာရင်ဝက်သားထည့်ပါဝက်သားကိုဆီနဲ့အကြောတင်းရေခမ်းတဲ့အထိထားပေးပါ / ရေခမ်းသွားမှကြက်သွန်ဖြူနီဂျင်းထောင်းထားတာထည့်ပါအဲ့ထဲကိုငြုပ်သီးအရောင်တင်မှုန့်နဲနဲလေးထည့်ပါတယ်အရောင်လှအောင်ပါကြက်သွန်တွေနွမ်းသွားရင်‌ဝက်သားမြုပ်အောင်ရေထည့်ပါအဖုံးဖုံးထားပါမနူးသေးရင်ရေထပ်ထည့်ပေးပါနူးခါနီးရင်ကြက်သွန်ဥသေးသေးလေးတွေထည့်ပါအ‌သေးမရှိလို့ရှိရင်ကြီးတာကိုလေးစိတ်စိတ်ထည့်ပေါ့ ကြက်သွန်လဲနူးဝက်သားလဲနူးဆီလဲပြန်သွားရင်ရပါပြီ🤗",
+					"img_url":"https://i.ibb.co/PhqMVjB/346952260-247829124581926-7276245622090446730-n.jpg"
+				},
+				{
+					"title":" ကြက်ခြေထောက်ငုံးဥပြုတ်ချိုချဉ်ငန်စပ်လေးသောက်ကြစို့လေ😷😷😷",
+					"description":"ရေဆူဆူမှာကြက်ခြေထောက်၁၀ချောင်းကိုအိုးထဲတွင်ထည့်ပြီးမီးအေးအေးနဲ့တနာရီတည်ထားပါအမြုတ်တွေခပ်ထုပ်ပေးပါ၁နာရီကြာတည်ထားတဲ့ကြက်ခြေထောက်ပြုတ်ထဲကိုပဲငံပြာရည်အကြည်ထမင်းစားဇွန်း၂ဇွန်းခရုဆီထမင်းစာဇွန်း၁ဇွန်းထန်းညက်၁ခဲသကြားကော်ဖီဖွန်းနဲ့၁ဇွန်းငရုတ်သီးစိမ်းအတောင့်၂၀ဒါးပြားရိုက်မန်ကျည်းရည်ဖျော်ထမင်းစားဇွန်း၃ဇွန်းသံပုရာသီး၁လုံးအရည်ညှစ်ထည့်ဆူအောင်ထပ်တည်ပြီးရင်ငါးငံပြာရည်အငန်ထမင်းသားဇွန်း၁ဇွန်းထည့်ပြီးထပ်ဆူလာရင်ရပါပြီရှင်😷😷😷အရည်နဲနေရင်ရေနွေးထပ်ထည့်ပေးပါရန်😷😷😷",
+					"img_url":"https://i.ibb.co/G9MpX30/347125337-714464330433568-6118401077248392726-n.jpg"
+				},
+				{
+					"title":" Meat / Fish My title1",
+					"description":"Meat / Fish My Description1",
+					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
+				},
+				{
+					"title":" Meat / Fish My title1",
+					"description":"Meat / Fish My Description1",
+					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
+				},
+				{
+					"title":" Meat / Fish My title1",
+					"description":"Meat / Fish My Description1",
+					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
+				},
+				{
+					"title":" Meat / Fish My title1",
+					"description":"Meat / Fish My Description1",
+					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
+				},
+				{
+					"title":" Meat / Fish My title1",
+					"description":"Meat / Fish My Description1",
+					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
+				},
+				{
+					"title":" Meat / Fish My title1",
+					"description":"Meat / Fish My Description1",
+					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
+				},
+				{
+					"title":" Meat / Fish My title1",
+					"description":"Meat / Fish My Description1",
+					"img_url":"https://forex.cbm.gov.mm//template/img/logo.png"
+				},
 				{
 					"title":" Meat / Fish My title1",
 					"description":"Meat / Fish My Description1",
@@ -96,7 +141,7 @@
 			]
 		},
 		{
-			"category_name":"Vegetables",
+			"category_name":"အသီးအရွက်ဟင်း",
 			"category_img_url":"https://i.ibb.co/g7xN0yg/Screen-Shot-2020-07-11-at-4-45-05-PM-800x650.png",
 			"category_data":[
 				{
