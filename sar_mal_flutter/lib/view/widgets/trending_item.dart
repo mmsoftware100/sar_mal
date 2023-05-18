@@ -121,10 +121,12 @@ class _TrendingItemState extends State<TrendingItem> {
                   child: Text(
                     "${widget.title}",
                     style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 16.0,
                       fontWeight: FontWeight.w800,
                     ),
                     textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: true,
                   ),
                 ),
               ),
