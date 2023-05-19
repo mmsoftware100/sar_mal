@@ -3,11 +3,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import '../constant/util.dart';
+import '../database_helper/database_helper.dart';
 import '../model/data_model.dart';
 import 'package:http/http.dart' as http;
 
 
 class DataProvider extends ChangeNotifier{
+
 
   List<DataModel> dataModel = [];
   bool dataReturnStatus = false;
@@ -23,7 +25,7 @@ class DataProvider extends ChangeNotifier{
 
   void getData()async{
 
-
+    final data = await DatabaseHelper.getItems();
     try{
       await ApiService.getDataFromEndPoing().then((success) {
         print("++++++++++++++++++++++++"+success.toString());
@@ -39,6 +41,8 @@ class DataProvider extends ChangeNotifier{
             rethrow;
           }
         }
+
+
         notifyListeners();
         changedataReturnStatus();
       });
@@ -50,5 +54,7 @@ class DataProvider extends ChangeNotifier{
 
   List<DataModel> get MyDataModel => dataModel;
   bool get DataReturnStatus => dataReturnStatus;
+
+
 
 }

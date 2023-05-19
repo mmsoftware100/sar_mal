@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:sar_mal_flutter/view/pages/selected_category_data_page.dart';
 
 import '../../constant/util.dart';
+import '../../database_helper/database_helper.dart';
 import '../../model/data_model.dart';
 import '../../provider/data_provider.dart';
 import 'package:loading_indicator/loading_indicator.dart';
@@ -18,6 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+
    List<Color> _kDefaultRainbowColors = const [
     Colors.red,
     Colors.orange,
@@ -28,11 +30,41 @@ class _HomePageState extends State<HomePage> {
     Colors.purple,
   ];
 
+   // All data
+   List<Map<String, dynamic>> myData = [];
+
+   // Insert a new data to the database
+   Future<void> addCategory(int cId,String cName,String cImgUrl) async {
+     await DatabaseHelper.createItem(cId,cName,cImgUrl);
+   }
+
+
+   bool _isLoading = true;
+   // This function is used to fetch all data from the database
+   void _refreshData() async {
+     final data = await DatabaseHelper.getItems();
+     setState(() {
+       myData = data;
+       _isLoading = false;
+     });
+
+     Provider.of<DataProvider>(context,listen: false).MyDataModel.map((e) {
+       for(int i = 0; i < myData.length ; i++){
+         if(myData[i][''] != e.categoryID){
+           addCategory(e.categoryID,e.categoryName,e.categoryImgUrl);
+           print("successfully inserted "+e.categoryName);
+         }
+       }
+
+     }).toList();
+   }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     Provider.of<DataProvider>(context,listen: false).getData();
+    _refreshData(); // Loading the data when the app starts
   }
   @override
   Widget build(BuildContext context) {
