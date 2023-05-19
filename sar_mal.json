@@ -1,5 +1,6 @@
 [
 		{
+			"category_id":1,
 			"category_name":"ဖျော်ရည် / အအေး",
 			"category_img_url":"https://i.ibb.co/HtnGrKy/Beverage-webinar-today-What-drinks-do-consumers-want.jpg",
 			"category_data":[
@@ -16,6 +17,7 @@
 			]
 		},
 		{
+			"category_id":2,
 			"category_name":"နို့ထွက်ပစ္စည်း",
 			"category_img_url":"https://i.ibb.co/7SmKDKP/R.jpg",
 			"category_data":[
@@ -32,6 +34,7 @@
 			]
 		},
 		{
+			"category_id":3,
 			"category_name":"အချိုပွဲ",
 			"category_img_url":"https://i.ibb.co/3k8GG26/Top-10-August-Recipes-Dessert-Recipes.jpg",
 			"category_data":[
@@ -48,6 +51,7 @@
 			]
 		},
 		{
+			"category_id":4,
 			"category_name":"သစ်သီးဝလံ",
 			"category_img_url":"https://i.ibb.co/GR9bwjk/OIP.jpg",
 			"category_data":[
@@ -64,6 +68,7 @@
 			]
 		},
 		{
+			"category_id":5,
 			"category_name":"ဆန် / ဂျုံ / ပြောင်း အစားအစာ",
 			"category_img_url":"https://i.ibb.co/Chf6T2m/R-1.jpg",
 			"category_data":[
@@ -80,6 +85,7 @@
 			]
 		},
 		{
+			"category_id":6,
 			"category_name":"အသားဟင်း / ငါးဟင်း",
 			"category_img_url":"https://i.ibb.co/q7V4GKr/R-2.jpg",
 			"category_data":[
@@ -141,6 +147,7 @@
 			]
 		},
 		{
+			"category_id":7,
 			"category_name":"အသီးအရွက်ဟင်း",
 			"category_img_url":"https://i.ibb.co/g7xN0yg/Screen-Shot-2020-07-11-at-4-45-05-PM-800x650.png",
 			"category_data":[

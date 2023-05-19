@@ -49,6 +49,8 @@ dependencies:
 
   loading_indicator: ^3.1.0
 
+  sqflite: ^2.2.8+2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
