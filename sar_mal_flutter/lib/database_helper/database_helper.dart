@@ -18,9 +18,12 @@ class DatabaseHelper {
         recipe_title TEXT,
         recipe_description TEXT,
         recipe_img_url TEXT,
+        category_id INTEGER,
         createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
       )
       """);
+
+    print("Table created");
   }
 // id: the id of a item
 // title, description: name and description of your activity
@@ -32,12 +35,13 @@ class DatabaseHelper {
       version: 1,
       onCreate: (sql.Database database, int version) async {
         await createTables(database);
+
       },
     );
   }
 
-  // Create new item
-  static Future<int> createItem(int cID,String? cName, String? cImaUrl) async {
+  // Create new categories
+  static Future<int> createCategory(int cID,String? cName, String? cImaUrl) async {
     final db = await DatabaseHelper.db();
 
     final data = {'category_id': cID, 'category_name': cName,'category_img_url': cImaUrl};
@@ -46,17 +50,40 @@ class DatabaseHelper {
     return id;
   }
 
-  // Read all items
-  static Future<List<Map<String, dynamic>>> getItems() async {
+  // Read all categories
+  static Future<List<Map<String, dynamic>>> getCategories() async {
     final db = await DatabaseHelper.db();
-    return db.query('items', orderBy: "id");
+    return db.query('categories', orderBy: "id");
   }
 
-  // Get a single item by id
+  // Get a single categories by id
   //We dont use this method, it is for you if you want it.
-  static Future<List<Map<String, dynamic>>> getItem(int id) async {
+  static Future<List<Map<String, dynamic>>> getCategory(int id) async {
     final db = await DatabaseHelper.db();
-    return db.query('items', where: "id = ?", whereArgs: [id], limit: 1);
+    return db.query('categories', where: "id = ?", whereArgs: [id], limit: 1);
+  }
+
+
+  // Create new Recepie
+  static Future<int> createRecepie(int rID,String? rTitle, String? rDescription,String? rImgUrl,int cID) async {
+    final db = await DatabaseHelper.db();
+
+    final data = {'recipes_id': rID, 'recipe_title': rTitle,'recipe_description':rDescription,'recipe_img_url': rImgUrl,'category_id':cID};
+    final id = await db.insert('recipes', data,
+        conflictAlgorithm: sql.ConflictAlgorithm.replace);
+    return id;
+  }
+  // Read all recipes
+  static Future<List<Map<String, dynamic>>> getRecepies() async {
+    final db = await DatabaseHelper.db();
+    return db.query('recipes', orderBy: "id");
+  }
+
+  // Get a single recipes by id
+  //We dont use this method, it is for you if you want it.
+  static Future<List<Map<String, dynamic>>> getOneRecepie(int id) async {
+    final db = await DatabaseHelper.db();
+    return db.query('recipes', where: "id = ?", whereArgs: [id], limit: 1);
   }
 
   // Update an item by id

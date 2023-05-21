@@ -6,6 +6,7 @@ import 'package:sar_mal_flutter/view/pages/selected_category_data_page.dart';
 
 import '../../constant/util.dart';
 import '../../database_helper/database_helper.dart';
+import '../../database_helper/db.dart';
 import '../../model/data_model.dart';
 import '../../provider/data_provider.dart';
 import 'package:loading_indicator/loading_indicator.dart';
@@ -30,51 +31,55 @@ class _HomePageState extends State<HomePage> {
     Colors.purple,
   ];
 
-   // All data
-   List<Map<String, dynamic>> myData = [];
+   MyDb mydb = new MyDb(); //mydb new object from db.dart
 
-   // Insert a new data to the database
-   Future<void> addCategory(int cId,String cName,String cImgUrl) async {
-     await DatabaseHelper.createItem(cId,cName,cImgUrl);
-   }
-
+   // All categories
+   List<LocalCategory> _categories = [];
 
    bool _isLoading = true;
    // This function is used to fetch all data from the database
-   void _refreshData() async {
-     final data = await DatabaseHelper.getItems();
+   void _refreshJournals() async {
+     final data = await DatabaseHelper.getCategories();
      setState(() {
-       myData = data;
+       // _categories = data;
+
+       for(int i = 0; i < data.length; i++){
+         try{
+           _categories.add(LocalCategory.fromJson(data[i]));
+           print("Hii "+i.toString());
+         }
+         catch(ex){
+           print("Himm");
+           // rethrow;
+         }
+       }
        _isLoading = false;
      });
 
-     Provider.of<DataProvider>(context,listen: false).MyDataModel.map((e) {
-       for(int i = 0; i < myData.length ; i++){
-         if(myData[i][''] != e.categoryID){
-           addCategory(e.categoryID,e.categoryName,e.categoryImgUrl);
-           print("successfully inserted "+e.categoryName);
-         }
-       }
-
+     _categories.map((e) {
+       print(e.categoryID);
      }).toList();
    }
+
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    mydb.open(); //initilization database
     Provider.of<DataProvider>(context,listen: false).getData();
-    _refreshData(); // Loading the data when the app starts
+    _refreshJournals(); // Loading the diary when the app starts
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Provider.of<DataProvider>(context,listen: true).DataReturnStatus == false ? null : Colors.grey,
+      backgroundColor: _isLoading == true ? null : Colors.grey,
       appBar: AppBar(
         backgroundColor: Colors.orange,
         title: Center(child: Text("စားမယ်/သောက်မယ်",style:TextStyle(fontSize:18))),
       ),
-      body:Provider.of<DataProvider>(context,listen: true).DataReturnStatus == false ? Padding(
+      body:_isLoading == true ? Padding(
         padding: const EdgeInsets.all(150),
         child: Center(
           child: LoadingIndicator(
@@ -89,7 +94,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(10.0),
         child: GridView.count(
             crossAxisCount: 2,
-            children: Provider.of<DataProvider>(context,listen: false).MyDataModel.map(
+            children: _categories.map(
                     (e) => InkWell(
                       child: Container(
                         height: MediaQuery.of(context).size.height/3,
@@ -123,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> SelectedCategoryPage( dataModel: e)));
+                        // Navigator.push(context, MaterialPageRoute(builder: (context)=> SelectedCategoryPage( dataModel: e)));
                       },
                     )).toList()
         ),
@@ -131,7 +136,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildImage(DataModel food) {
+  Widget buildImage(LocalCategory food) {
     return Container(
       height: MediaQuery.of(context).size.width / 2.5,
       child: ClipRRect(
