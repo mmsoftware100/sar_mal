@@ -59,11 +59,12 @@ class DataProvider extends ChangeNotifier{
   void getData()async{
 
     await _getAllLocalDBCategories();
+    await _getAllLocalDBRecepies();
     try{
       await ApiService.getDataFromEndPoing().then((success) async {
         print("++++++++++++++++++++++++"+success.toString());
         print("***********************");
-        List<dynamic> list = json.decode(success);
+        List<dynamic> list = json.decode(success.toString().replaceAll("\n",""));
         print("getDataFromEndPoing data is ** "+list.toString());
         dataModel.clear();
         for(int i = 0; i < list.length; i++){

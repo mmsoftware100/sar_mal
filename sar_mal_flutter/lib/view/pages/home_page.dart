@@ -68,12 +68,14 @@ class _HomePageState extends State<HomePage> {
    // This function is used to fetch all data from the database
    void _selectAllRecepiesFromDB() async {
      final dataRecepies = await DatabaseHelper.getRecepies();
+     print(dataRecepies);
      setState(() {
 
        for(int i = 0; i < dataRecepies.length; i++){
          try{
            _recepies.add(LocalRecepie.fromJson(dataRecepies[i]));
            print("Hii _recepies  "+i.toString());
+           print(_recepies);
          }
          catch(ex){
            print("Himm _recepies ");
@@ -83,8 +85,10 @@ class _HomePageState extends State<HomePage> {
        _isLoadingRecepies = false;
      });
 
+
+
      _recepies.map((e) {
-       print(e.recepieId);
+       print("_recepies title "+e.title);
      }).toList();
    }
 

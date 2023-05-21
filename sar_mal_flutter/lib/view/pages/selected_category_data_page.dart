@@ -16,6 +16,16 @@ class SelectedCategoryPage extends StatefulWidget {
 }
 
 class _SelectedCategoryPageState extends State<SelectedCategoryPage> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget.recepieDataModel.map((e) {
+      print(e.recepieID.toString()+" list ");
+      print(e.title.toString()+" title ");
+    }).toList();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,12 +36,12 @@ class _SelectedCategoryPageState extends State<SelectedCategoryPage> {
       ),
       body: ListView(
         children: widget.recepieDataModel.map((e) {
-          return InkWell(
-              child: e.categoryId == widget.categoryID ? TrendingItem(img: e.imgUrl,title: e.title,address: e.description,rating: "5",) : null,
+          return e.categoryId == widget.categoryID ? InkWell(
+              child:  TrendingItem(img: e.imgUrl,title: e.title,address: e.description,rating: "5",) ,
             onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailPage(localRecepie: e)));
             },
-          );
+          ): Container();
         }).toList(),
       ),
     );
