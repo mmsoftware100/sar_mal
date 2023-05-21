@@ -5,8 +5,11 @@ import '../widgets/trending_item.dart';
 import 'detail_page.dart';
 
 class SelectedCategoryPage extends StatefulWidget {
-  DataModel dataModel;
-  SelectedCategoryPage({Key? key,required this.dataModel}) : super(key: key);
+
+  int categoryID;
+  String categoryName;
+  List<LocalRecepie> recepieDataModel;
+  SelectedCategoryPage({Key? key,required this.categoryID,required this.categoryName,required this.recepieDataModel}) : super(key: key);
 
   @override
   State<SelectedCategoryPage> createState() => _SelectedCategoryPageState();
@@ -19,14 +22,14 @@ class _SelectedCategoryPageState extends State<SelectedCategoryPage> {
 
       appBar: AppBar(
         backgroundColor: Colors.orange,
-        title: Text(widget.dataModel.categoryName),
+        title: Text(widget.categoryName),
       ),
       body: ListView(
-        children: widget.dataModel.categoryData.map((e) {
+        children: widget.recepieDataModel.map((e) {
           return InkWell(
-              child: TrendingItem(img: e.imgUrl,title: e.title,address: e.description,rating: "5",),
+              child: e.categoryId == widget.categoryID ? TrendingItem(img: e.imgUrl,title: e.title,address: e.description,rating: "5",) : null,
             onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailPage(categoryData: e)));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailPage(localRecepie: e)));
             },
           );
         }).toList(),

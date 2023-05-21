@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../model/data_model.dart';
 
 class DetailPage extends StatefulWidget {
-  CategoryData categoryData;
-  DetailPage({Key? key,required this.categoryData}) : super(key: key);
+  LocalRecepie localRecepie;
+  DetailPage({Key? key,required this.localRecepie}) : super(key: key);
 
   @override
   State<DetailPage> createState() => _DetailPageState();
@@ -17,7 +17,7 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange,
-        title: Text(widget.categoryData.title),
+        title: Text(widget.localRecepie.title),
       ),
       body: ListView(
         children: [
@@ -34,7 +34,7 @@ class _DetailPageState extends State<DetailPage> {
               //   fit: BoxFit.cover,
               // ),
               child: CachedNetworkImage(
-                imageUrl: "${widget.categoryData.imgUrl}",
+                imageUrl: "${widget.localRecepie.imgUrl}",
                 imageBuilder: (context, imageProvider) => Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -55,7 +55,7 @@ class _DetailPageState extends State<DetailPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              widget.categoryData.title,
+              widget.localRecepie.title,
               style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),
             ),
           ),
@@ -63,7 +63,7 @@ class _DetailPageState extends State<DetailPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              widget.categoryData.description,
+              widget.localRecepie.description,
               style: TextStyle(fontSize: 20,),
               textAlign: TextAlign.justify,
             ),

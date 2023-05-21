@@ -35,9 +35,14 @@ class _HomePageState extends State<HomePage> {
    // All categories
    List<LocalCategory> _categories = [];
 
+   // All recepies
+   List<LocalRecepie> _recepies = [];
+
    bool _isLoading = true;
+   bool _isLoadingRecepies = true;
+
    // This function is used to fetch all data from the database
-   void _refreshJournals() async {
+   void _selectAllCategoriesFromDB() async {
      final data = await DatabaseHelper.getCategories();
      setState(() {
        // _categories = data;
@@ -60,6 +65,29 @@ class _HomePageState extends State<HomePage> {
      }).toList();
    }
 
+   // This function is used to fetch all data from the database
+   void _selectAllRecepiesFromDB() async {
+     final dataRecepies = await DatabaseHelper.getRecepies();
+     setState(() {
+
+       for(int i = 0; i < dataRecepies.length; i++){
+         try{
+           _recepies.add(LocalRecepie.fromJson(dataRecepies[i]));
+           print("Hii _recepies  "+i.toString());
+         }
+         catch(ex){
+           print("Himm _recepies ");
+           // rethrow;
+         }
+       }
+       _isLoadingRecepies = false;
+     });
+
+     _recepies.map((e) {
+       print(e.recepieId);
+     }).toList();
+   }
+
 
 
   @override
@@ -67,7 +95,8 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     Provider.of<DataProvider>(context,listen: false).getData();
-    _refreshJournals(); // Loading the diary when the app starts
+    _selectAllCategoriesFromDB(); // Loading the diary when the app starts
+    _selectAllRecepiesFromDB();
   }
   @override
   Widget build(BuildContext context) {
@@ -126,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onTap: (){
-                        // Navigator.push(context, MaterialPageRoute(builder: (context)=> SelectedCategoryPage( dataModel: e)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> SelectedCategoryPage( categoryID:e.categoryID,categoryName:e.categoryName,recepieDataModel: _recepies)));
                       },
                     )).toList()
         ),
