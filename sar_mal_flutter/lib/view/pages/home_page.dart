@@ -31,7 +31,6 @@ class _HomePageState extends State<HomePage> {
     Colors.purple,
   ];
 
-   MyDb mydb = new MyDb(); //mydb new object from db.dart
 
    // All categories
    List<LocalCategory> _categories = [];
@@ -67,7 +66,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    mydb.open(); //initilization database
     Provider.of<DataProvider>(context,listen: false).getData();
     _refreshJournals(); // Loading the diary when the app starts
   }
