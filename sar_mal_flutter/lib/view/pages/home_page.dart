@@ -44,6 +44,7 @@ class _HomePageState extends State<HomePage> {
    // This function is used to fetch all data from the database
    void _selectAllCategoriesFromDB() async {
      final data = await DatabaseHelper.getCategories();
+     _categories.clear();
      setState(() {
        // _categories = data;
 
@@ -69,6 +70,7 @@ class _HomePageState extends State<HomePage> {
    void _selectAllRecepiesFromDB() async {
      final dataRecepies = await DatabaseHelper.getRecepies();
      print(dataRecepies);
+     _recepies.clear();
      setState(() {
 
        for(int i = 0; i < dataRecepies.length; i++){

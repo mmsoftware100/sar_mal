@@ -60,7 +60,9 @@ class DatabaseHelper {
   //We dont use this method, it is for you if you want it.
   static Future<List<Map<String, dynamic>>> getCategory(int id) async {
     final db = await DatabaseHelper.db();
-    return db.query('categories', where: "id = ?", whereArgs: [id], limit: 1);
+    // return db.query('categories', where: "id = ?", whereArgs: [id], limit: 1);
+    var resultSet = db.rawQuery("");
+    return resultSet;
   }
 
 
