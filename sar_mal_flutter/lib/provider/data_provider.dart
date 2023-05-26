@@ -15,6 +15,8 @@ class DataProvider extends ChangeNotifier{
   MyDb mydb = new MyDb(); //mydb new object from db.dart
   List<DataModel> dataModel = [];
   bool dataReturnStatus = false;
+  bool newCategoryAddStatus = false;
+  bool newRecepieAddStatus = false;
 
 
   // All lDBcategories
@@ -56,6 +58,24 @@ class DataProvider extends ChangeNotifier{
     notifyListeners();
   }
 
+  bool get MyNewCategoryDataReturnStatus {
+    return newCategoryAddStatus;
+  }
+
+  void changeNewCategoryDataReturnStatus() {
+    newCategoryAddStatus= true;
+    notifyListeners();
+  }
+
+  bool get MyNewRecepieDataReturnStatus {
+    return newRecepieAddStatus;
+  }
+
+  void changeNewRecepieDataReturnStatus() {
+    newRecepieAddStatus= true;
+    notifyListeners();
+  }
+
   void getData()async{
 
     await _getAllLocalDBCategories();
@@ -83,6 +103,7 @@ class DataProvider extends ChangeNotifier{
             await DatabaseHelper.createCategory(e.categoryID,e.categoryName,e.categoryImgUrl);
             print(e.categoryName+" is inserted ");
           }).toList();
+          changeNewCategoryDataReturnStatus();
         }
         else{
           dataModel.map((e) async{
@@ -93,6 +114,7 @@ class DataProvider extends ChangeNotifier{
             }
             print(" Hello "+e.categoryName);
           }).toList();
+          changeNewCategoryDataReturnStatus();
         }
 
         if(_lDBrecepies.length == 0){
@@ -103,6 +125,7 @@ class DataProvider extends ChangeNotifier{
               print(f.recepieId.toString()+" is inserted ");
             }).toList();
           }).toList();
+          changeNewRecepieDataReturnStatus();
         }
         else{
           dataModel.map((e) {
@@ -113,6 +136,7 @@ class DataProvider extends ChangeNotifier{
               }
             }).toList();
           }).toList();
+          changeNewRecepieDataReturnStatus();
         }
 
         notifyListeners();
@@ -126,6 +150,8 @@ class DataProvider extends ChangeNotifier{
 
   List<DataModel> get MyDataModel => dataModel;
   bool get DataReturnStatus => dataReturnStatus;
+  bool get AddNewCategoryReturnStatus => newCategoryAddStatus;
+  bool get AddNewRecepieReturnStatus => newRecepieAddStatus;
 
 
 

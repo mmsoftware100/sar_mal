@@ -106,6 +106,10 @@ class _HomePageState extends State<HomePage> {
   }
   @override
   Widget build(BuildContext context) {
+     if(Provider.of<DataProvider>(context,listen: false).newCategoryAddStatus == true || Provider.of<DataProvider>(context,listen: false).newRecepieAddStatus == true){
+       _selectAllCategoriesFromDB(); // Loading the diary when the app starts
+       _selectAllRecepiesFromDB();
+     }
     return Scaffold(
       backgroundColor: _isLoading == true ? null : Colors.grey,
       appBar: AppBar(

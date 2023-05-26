@@ -53,16 +53,17 @@ class DatabaseHelper {
   // Read all categories
   static Future<List<Map<String, dynamic>>> getCategories() async {
     final db = await DatabaseHelper.db();
-    return db.query('categories', orderBy: "id");
+    // return db.query('categories', orderBy: "id");
+    var resultSet = db.rawQuery("SELECT * FROM categories ORDER BY id ");
+    return resultSet;
   }
 
   // Get a single categories by id
   //We dont use this method, it is for you if you want it.
   static Future<List<Map<String, dynamic>>> getCategory(int id) async {
     final db = await DatabaseHelper.db();
-    // return db.query('categories', where: "id = ?", whereArgs: [id], limit: 1);
-    var resultSet = db.rawQuery("");
-    return resultSet;
+    return db.query('categories', where: "id = ?", whereArgs: [id], limit: 1);
+
   }
 
 
