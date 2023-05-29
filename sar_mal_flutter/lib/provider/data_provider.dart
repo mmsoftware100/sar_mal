@@ -15,38 +15,71 @@ class DataProvider extends ChangeNotifier{
   MyDb mydb = new MyDb(); //mydb new object from db.dart
   List<DataModel> dataModel = [];
   bool dataReturnStatus = false;
+  bool categoryReturnStatus = false;
+  bool recepieReturnStatus = false;
   bool newCategoryAddStatus = false;
   bool newRecepieAddStatus = false;
 
 
   // All lDBcategories
-  List<Map<String, dynamic>> _lDBcategories = [];
-  List<Map<String, dynamic>> _lDBrecepies = [];
+  // List<Map<String, dynamic>> _lDBcategories = [];
+  // List<Map<String, dynamic>> _lDBrecepies = [];
+
+  List<LocalCategory> _lDBcategories = [];
+  List<LocalRecepie> _lDBrecepies = [];
+  List<LocalCategory> get lDBcategories => _lDBcategories;
+  List<LocalRecepie> get lDBrecepies => _lDBrecepies;
+
   List cID = [];
   List rID = [];
 
   // This function is used to fetch all category from the database
-  Future<void> _getAllLocalDBCategories() async {
+  Future<void> getAllLocalDBCategories() async {
 
     print("This is _getAllLocalDBCategories ");
     final data = await DatabaseHelper.getCategories();
-    _lDBcategories = data;
+    // _lDBcategories = data;
+    for(int i = 0; i < data.length; i++){
+      try{
+        _lDBcategories.add(LocalCategory.fromJson(data[i]));
+        print("Hii "+i.toString());
+      }
+      catch(ex){
+        print("Himm");
+        // rethrow;
+      }
+    }
     print("Hey "+_lDBcategories.length.toString());
     _lDBcategories.map((e) {
-      cID.add(e['category_id']);
+      cID.add(e.categoryID);
     }).toList();
+    categoryReturnStatus = true;
+    notifyListeners();
   }
 
   // This function is used to fetch all recepie from the database
-  Future<void> _getAllLocalDBRecepies() async {
+  Future<void> getAllLocalDBRecepies() async {
 
     print("This is _getAllLocalDBRecepies ");
     final data = await DatabaseHelper.getRecepies();
-    _lDBrecepies = data;
+    // _lDBrecepies = data;
+    for(int i = 0; i < data.length; i++){
+      try{
+        _lDBrecepies.add(LocalRecepie.fromJson(data[i]));
+        print("Hii _recepies  "+i.toString());
+        print(_lDBrecepies);
+      }
+      catch(ex){
+        print("Himm _recepies ");
+        // rethrow;
+      }
+    }
     print("Hey "+_lDBrecepies.length.toString());
     _lDBrecepies.map((e) {
-      rID.add(e['recipes_id']);
+      rID.add(e.recepieID);
     }).toList();
+    recepieReturnStatus = true;
+    notifyListeners();
   }
 
   bool get MydataReturnStatus {
@@ -78,8 +111,8 @@ class DataProvider extends ChangeNotifier{
 
   Future<bool> getData()async{
 
-    await _getAllLocalDBCategories();
-    await _getAllLocalDBRecepies();
+    await getAllLocalDBCategories();
+    await getAllLocalDBRecepies();
     try{
       await ApiService.getDataFromEndPoing().then((success) async {
         print("++++++++++++++++++++++++"+success.toString());
@@ -111,6 +144,7 @@ class DataProvider extends ChangeNotifier{
             if(!cID.contains(e.categoryID)){
               print(e.categoryName+" is not exit");
               await DatabaseHelper.createCategory(e.categoryID,e.categoryName,e.categoryImgUrl);
+
             }
             print(" Hello "+e.categoryName);
           }).toList();
@@ -142,6 +176,8 @@ class DataProvider extends ChangeNotifier{
         notifyListeners();
         changedataReturnStatus();
       });
+      getAllLocalDBCategories();
+      getAllLocalDBRecepies();
       return true;
     }
     catch(ex){

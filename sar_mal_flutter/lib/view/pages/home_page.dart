@@ -128,8 +128,8 @@ class _HomePageState extends State<HomePage> {
   void _updateFromDb(){
     print("HomePage->_updateFromDb");
 
-    _selectAllCategoriesFromDB(); // Loading the diary when the app starts
-    _selectAllRecepiesFromDB();
+    // _selectAllCategoriesFromDB(); // Loading the diary when the app starts
+    // _selectAllRecepiesFromDB();
   }
   @override
   Widget build(BuildContext context) {
@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.orange,
         title: Center(child: Text("စားမယ်/သောက်မယ်",style:TextStyle(fontSize:18))),
       ),
-      body:_isLoading == true ? Padding(
+      body:Provider.of<DataProvider>(context,listen: true).dataReturnStatus != true ? Padding(
         padding: const EdgeInsets.all(150),
         child: Center(
           child: LoadingIndicator(
@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(10.0),
         child: GridView.count(
             crossAxisCount: 2,
-            children: _categories.map(
+            children: Provider.of<DataProvider>(context,listen: true).lDBcategories.map(
                     (e) => InkWell(
                       child: Container(
                         height: MediaQuery.of(context).size.height/3,
@@ -189,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> SelectedCategoryPage( categoryID:e.categoryID,categoryName:e.categoryName,recepieDataModel: _recepies)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> SelectedCategoryPage( categoryID:e.categoryID,categoryName:e.categoryName,recepieDataModel: Provider.of<DataProvider>(context,listen: false).lDBrecepies)));
                       },
                     )).toList()
         ),
