@@ -76,7 +76,7 @@ class DataProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  void getData()async{
+  Future<bool> getData()async{
 
     await _getAllLocalDBCategories();
     await _getAllLocalDBRecepies();
@@ -142,6 +142,7 @@ class DataProvider extends ChangeNotifier{
         notifyListeners();
         changedataReturnStatus();
       });
+      return true;
     }
     catch(ex){
       rethrow;

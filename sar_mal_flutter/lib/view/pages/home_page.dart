@@ -99,17 +99,41 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     // TODO: implement initState
+    print("HomePage->initState");
     super.initState();
-    Provider.of<DataProvider>(context,listen: false).getData();
+    _init();
+    _updateFromDb();
+  }
+
+  @override
+  void didChangeDependencies() {
+    print("HomePage->didChangeDependencies");
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant HomePage oldWidget) {
+    print("HomePage->didUpdateWidget");
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+  }
+
+  void _init()async{
+    print("HomePage->_init");
+    bool status = await Provider.of<DataProvider>(context,listen: false).getData();
+    _updateFromDb();
+  }
+
+  void _updateFromDb(){
+    print("HomePage->_updateFromDb");
+
     _selectAllCategoriesFromDB(); // Loading the diary when the app starts
     _selectAllRecepiesFromDB();
   }
   @override
   Widget build(BuildContext context) {
-     if(Provider.of<DataProvider>(context,listen: false).newCategoryAddStatus == true || Provider.of<DataProvider>(context,listen: false).newRecepieAddStatus == true){
-       _selectAllCategoriesFromDB(); // Loading the diary when the app starts
-       _selectAllRecepiesFromDB();
-     }
+
     return Scaffold(
       backgroundColor: _isLoading == true ? null : Colors.grey,
       appBar: AppBar(
