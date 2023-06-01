@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "425619794343",
+    "project_id": "sar-mal-14c24",
+    "storage_bucket": "sar-mal-14c24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425619794343:android:1a11a5bfcde01be3932e82",
+        "android_client_info": {
+          "package_name": "com.mmsoftware100.sar_mal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhMIQTalTn2KmkMCgtRgkQ6Bu3WiyOr34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
