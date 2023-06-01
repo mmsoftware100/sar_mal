@@ -1,4 +1,4 @@
-package com.mmsoftware100.sar_mal_flutter
+package com.mmsoftware100.sar_mal
 
 import io.flutter.embedding.android.FlutterActivity
 
