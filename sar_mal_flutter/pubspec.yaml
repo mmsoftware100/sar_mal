@@ -69,7 +69,7 @@ flutter_icons:
 
 flutter_native_splash:
   android: true
-  color: "#42a5f5"
+  color: "#f7f6f1"
   image: asset/logos/sar_mal_logo.jpg
   android_12:
     image: asset/logos/sar_mal_logo.jpg
