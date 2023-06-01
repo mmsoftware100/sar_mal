@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:sar_mal_flutter/view/widgets/skeleton.dart';
 
 class TrendingItem extends StatefulWidget {
   final String img;
@@ -60,7 +61,7 @@ class _TrendingItemState extends State<TrendingItem> {
                         ),
                         placeholder: (context, url) => Padding(
                           padding: const EdgeInsets.all(100.0),
-                          child: Center(child: CircularProgressIndicator()),
+                          child: Center(child: Skeleton()),
                         ),
                         errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
@@ -146,7 +147,6 @@ class _TrendingItemState extends State<TrendingItem> {
                   ),
                 ),
               ),
-              SizedBox(height: 10.0),
             ],
           ),
         ),

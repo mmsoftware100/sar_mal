@@ -37,6 +37,7 @@ class DataProvider extends ChangeNotifier{
   Future<void> getAllLocalDBCategories() async {
 
     print("This is _getAllLocalDBCategories ");
+    _lDBcategories.clear();
     final data = await DatabaseHelper.getCategories();
     // _lDBcategories = data;
     for(int i = 0; i < data.length; i++){
@@ -61,6 +62,7 @@ class DataProvider extends ChangeNotifier{
   Future<void> getAllLocalDBRecepies() async {
 
     print("This is _getAllLocalDBRecepies ");
+    _lDBrecepies.clear();
     final data = await DatabaseHelper.getRecepies();
     // _lDBrecepies = data;
     for(int i = 0; i < data.length; i++){
