@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/data_model.dart';
@@ -25,6 +26,14 @@ class _SelectedCategoryPageState extends State<SelectedCategoryPage> {
       print(e.recepieID.toString()+" list ");
       print(e.title.toString()+" title ");
     }).toList();
+
+    FirebaseMessaging.onMessage.listen((RemoteMessage event) {
+      print("message recieved");
+      print(event.notification!.body);
+    });
+    FirebaseMessaging.onMessageOpenedApp.listen((message) {
+      print('Message clicked!');
+    });
   }
   @override
   Widget build(BuildContext context) {

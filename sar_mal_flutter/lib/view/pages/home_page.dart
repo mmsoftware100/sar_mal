@@ -1,5 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:sar_mal_flutter/view/pages/selected_category_data_page.dart';
@@ -20,6 +23,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  late final FirebaseMessaging _messaging;
+  late int _totalNotifications;
 
    List<Color> _kDefaultRainbowColors = const [
     Colors.red,
@@ -94,15 +99,84 @@ class _HomePageState extends State<HomePage> {
      }).toList();
    }
 
+  AndroidNotificationChannel channel = AndroidNotificationChannel(
+      'high_importance_channel_martin', // id
+      'High Importance Notifications Martin', // title
+      importance: Importance.high,
+      playSound: true);
 
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+  Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+    print("_firebaseMessagingBackgroundHandler");
+    print(message);
+    print(message.data.toString());
+    print("app_url");
+    print(message.data['app_url']);
+    await Firebase.initializeApp();
+    print('A bg message just showed up :  ${message.messageId}');
+  }
+
+
+  void registerNotification() async {
+    await Firebase.initializeApp();
+    _messaging = FirebaseMessaging.instance;
+
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+    NotificationSettings settings = await _messaging.requestPermission(
+      alert: true,
+      badge: true,
+      provisional: false,
+      sound: true,
+    );
+
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      print('User granted permission');
+
+      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+        print(
+            'Message title: ${message.notification?.title}, body: ${message.notification?.body}, data: ${message.data}');
+
+
+        setState(() {
+          _totalNotifications++;
+        });
+
+      });
+    } else {
+      print('User declined or has not accepted permission');
+    }
+  }
+
+  // For handling notification when the app is in terminated state
+  checkForInitialMessage() async {
+    await Firebase.initializeApp();
+    RemoteMessage? initialMessage =
+    await FirebaseMessaging.instance.getInitialMessage();
+
+  }
 
   @override
   void initState() {
     // TODO: implement initState
+
+    _totalNotifications = 0;
+    registerNotification();
+    checkForInitialMessage();
+
     print("HomePage->initState");
     super.initState();
     _init();
     _updateFromDb();
+
+    FirebaseMessaging.onMessage.listen((RemoteMessage event) {
+      print("message recieved");
+      print(event.notification!.body);
+    });
+    FirebaseMessaging.onMessageOpenedApp.listen((message) {
+      print('Message clicked!');
+    });
   }
 
   @override
