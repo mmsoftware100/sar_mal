@@ -14,6 +14,7 @@ class SkeletonState extends State<Skeleton> with SingleTickerProviderStateMixin 
 
   late Animation gradientPosition;
 
+
   @override
   void initState() {
     super.initState();
@@ -36,8 +37,8 @@ class SkeletonState extends State<Skeleton> with SingleTickerProviderStateMixin 
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override

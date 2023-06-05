@@ -180,6 +180,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   void didChangeDependencies() {
     print("HomePage->didChangeDependencies");
     // TODO: implement didChangeDependencies
