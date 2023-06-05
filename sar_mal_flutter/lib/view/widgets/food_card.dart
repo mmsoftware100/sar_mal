@@ -96,17 +96,37 @@ class _FoodCardState extends State<FoodCard> with SingleTickerProviderStateMixin
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          RatingBar(
-            initialRating: 5.0,
-            direction: Axis.horizontal,
-            itemCount: 5,
-            itemSize: 14,
-            unratedColor: Colors.black,
-            itemPadding: EdgeInsets.only(right: 4.0),
-            ignoreGestures: true,
-            itemBuilder: (context, index) => Icon(Icons.star, color: mainColor),
-            onRatingUpdate: (rating) {},
+          RatingBar.builder(
+            initialRating: 3,
+              minRating: 1,
+              direction: Axis.horizontal,
+              allowHalfRating: true,
+              itemCount: 5,
+              itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+              itemBuilder: (context, _) => Icon(
+                Icons.star,
+                color: Colors.amber,
+              ),
+              onRatingUpdate: (rating) {
+                print(rating);
+              },
           ),
+
+          /*
+          RatingBar(
+                initialRating: 5.0,
+                direction: Axis.horizontal,
+                itemCount: 5,
+                itemSize: 14,
+                unratedColor: Colors.black,
+                itemPadding: EdgeInsets.only(right: 4.0),
+                ignoreGestures: true,
+                //itemBuilder: (context, index) => Icon(Icons.star, color: mainColor),
+                onRatingUpdate: (rating) {},
+                // ratingWidget: RatingWidget(),
+              ),
+
+           */
           Text('5'),
         ],
       ),
