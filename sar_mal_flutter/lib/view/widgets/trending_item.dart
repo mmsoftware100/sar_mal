@@ -5,14 +5,14 @@ import 'package:sar_mal_flutter/view/widgets/skeleton.dart';
 class TrendingItem extends StatefulWidget {
   final String img;
   final String title;
-  final String address;
+  final String description;
   final String rating;
 
   TrendingItem({
     Key? key,
     required this.img,
     required this.title,
-    required this.address,
+    required this.description,
     required this.rating,
   }) : super(key: key);
 
@@ -119,6 +119,7 @@ class _TrendingItemState extends State<TrendingItem> {
                 padding: EdgeInsets.only(left: 15.0),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
+<<<<<<< Updated upstream
                   child: Text(
                     "${widget.title}",
                     style: TextStyle(
@@ -129,6 +130,33 @@ class _TrendingItemState extends State<TrendingItem> {
                     overflow: TextOverflow.ellipsis,
                     softWrap: true,
                   ),
+=======
+                  // child: Expanded(
+                  //   child: Text(
+                  //     "${widget.title}",
+                  //     style: TextStyle(
+                  //       fontSize: 20.0,
+                  //       fontWeight: FontWeight.w800,
+                  //     ),
+                  //     textAlign: TextAlign.left,
+                  //     overflow: TextOverflow.clip,
+                  //   ),
+                  // ),
+                  child:Expanded(
+                    child: RichText(
+                      overflow: TextOverflow.clip,
+                      text: TextSpan(
+                      //text: '${widget.title}',
+                      style: DefaultTextStyle.of(context).style,
+
+                      children: <TextSpan>[
+                        TextSpan(text: "${widget.title}", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16)),
+                        //TextSpan(text: 'Super long unbolded text here'),
+                      ],
+                    ),
+                ),
+                  )
+>>>>>>> Stashed changes
                 ),
               ),
               SizedBox(height: 7.0),
@@ -137,7 +165,7 @@ class _TrendingItemState extends State<TrendingItem> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   child: Text(
-                    "${widget.address}",
+                    "${widget.description}",
                     style: TextStyle(
                       fontSize: 12.0,
                       fontWeight: FontWeight.w300,
