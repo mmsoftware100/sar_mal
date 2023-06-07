@@ -119,18 +119,7 @@ class _TrendingItemState extends State<TrendingItem> {
                 padding: EdgeInsets.only(left: 15.0),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-<<<<<<< Updated upstream
-                  child: Text(
-                    "${widget.title}",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w800,
-                    ),
-                    textAlign: TextAlign.left,
-                    overflow: TextOverflow.ellipsis,
-                    softWrap: true,
-                  ),
-=======
+
                   // child: Expanded(
                   //   child: Text(
                   //     "${widget.title}",
@@ -156,7 +145,6 @@ class _TrendingItemState extends State<TrendingItem> {
                     ),
                 ),
                   )
->>>>>>> Stashed changes
                 ),
               ),
               SizedBox(height: 7.0),

@@ -50,15 +50,9 @@ class _SelectedCategoryPageState extends State<SelectedCategoryPage> {
         title: Text(widget.categoryName),
       ),
       body: ListView(
-<<<<<<< Updated upstream
         children: widget.recepieDataModel.map((e) {
           return e.categoryId == widget.categoryID ? InkWell(
-              child:  TrendingItem(img: e.imgUrl,title: e.title,address: e.description,rating: "5",) ,
-=======
-        children: widget.dataModel.categoryData.map((e) {
-          return InkWell(
-              child: TrendingItem(img: e.imgUrl,title: e.title,description: e.description,rating: "5",),
->>>>>>> Stashed changes
+              child:  TrendingItem(img: e.imgUrl,title: e.title,description: e.description,rating: "5",) ,
             onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailPage(localRecepie: e)));
             },
