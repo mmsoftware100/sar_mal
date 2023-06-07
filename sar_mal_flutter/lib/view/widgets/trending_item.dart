@@ -120,31 +120,31 @@ class _TrendingItemState extends State<TrendingItem> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
 
-                  // child: Expanded(
-                  //   child: Text(
-                  //     "${widget.title}",
-                  //     style: TextStyle(
-                  //       fontSize: 20.0,
-                  //       fontWeight: FontWeight.w800,
-                  //     ),
-                  //     textAlign: TextAlign.left,
-                  //     overflow: TextOverflow.clip,
-                  //   ),
-                  // ),
-                  child:Expanded(
-                    child: RichText(
+                  child: Expanded(
+                    child: Text(
+                      "${widget.title}",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w800,
+                      ),
+                      textAlign: TextAlign.left,
                       overflow: TextOverflow.clip,
-                      text: TextSpan(
-                      //text: '${widget.title}',
-                      style: DefaultTextStyle.of(context).style,
-
-                      children: <TextSpan>[
-                        TextSpan(text: "${widget.title}", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16)),
-                        //TextSpan(text: 'Super long unbolded text here'),
-                      ],
                     ),
-                ),
-                  )
+                  ),
+                //   child:Expanded(
+                //     child: RichText(
+                //       overflow: TextOverflow.clip,
+                //       text: TextSpan(
+                //       //text: '${widget.title}',
+                //       style: DefaultTextStyle.of(context).style,
+                //
+                //       children: <TextSpan>[
+                //         TextSpan(text: "${widget.title}", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16)),
+                //         //TextSpan(text: 'Super long unbolded text here'),
+                //       ],
+                //     ),
+                // ),
+                //   )
                 ),
               ),
               SizedBox(height: 7.0),
