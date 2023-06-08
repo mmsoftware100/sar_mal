@@ -3,6 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/data_model.dart';
+import '../widgets/skeleton.dart';
 
 class DetailPage extends StatefulWidget {
   LocalRecepie localRecepie;
@@ -33,7 +34,7 @@ class _DetailPageState extends State<DetailPage> {
         backgroundColor: Colors.orange,
         title: Text(widget.localRecepie.title),
       ),
-      body: ListView(
+      body: MediaQuery.of(context).orientation == Orientation.portrait ?ListView(
         physics: BouncingScrollPhysics(),
         children: [
           Container(
@@ -59,19 +60,32 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ),
                 ),
-                placeholder: (context, url) => Padding(
-                  padding: const EdgeInsets.all(100.0),
-                  child: Center(child: CircularProgressIndicator()),
-                ),
+                placeholder: (context, url) => Skeleton(),
                 errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(18.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text(
               widget.localRecepie.title,
               style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 15.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: Text(
+                "${widget.localRecepie.createdDate}",
+                style: TextStyle(
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.grey
+                ),
+                overflow: TextOverflow.ellipsis,
+                softWrap: true,
+              ),
             ),
           ),
           Divider(),
@@ -83,6 +97,79 @@ class _DetailPageState extends State<DetailPage> {
               textAlign: TextAlign.justify,
             ),
           )
+        ],
+      ):
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width/3.5,
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+              child: CachedNetworkImage(
+                imageUrl: "${widget.localRecepie.imgUrl}",
+                imageBuilder: (context, imageProvider) => Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                      //colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn)
+                    ),
+                  ),
+                ),
+                placeholder: (context, url) => Padding(
+                  padding: const EdgeInsets.all(100.0),
+                  child: Center(child: Skeleton()),
+                ),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+            ),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width/1.5,
+            child: ListView(
+              physics: BouncingScrollPhysics(),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    widget.localRecepie.title,
+                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 15.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Text(
+                      "${widget.localRecepie.createdDate}",
+                      style: TextStyle(
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.grey
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: true,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Text(
+                    widget.localRecepie.description,
+                    style: TextStyle(fontSize: 20,),
+                    textAlign: TextAlign.justify,
+                  ),
+                )
+              ],
+            ),
+          )
+
         ],
       ),
     );

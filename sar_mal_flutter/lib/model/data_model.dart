@@ -92,12 +92,14 @@ class LocalRecepie {
     required this.description,
     required this.imgUrl,
     required this.categoryId,
+    required this.createdDate,
   });
   late final int recepieID;
   late final String title;
   late final String description;
   late final String imgUrl;
   late final int categoryId;
+  late final String createdDate;
 
   LocalRecepie.fromJson(Map<String, dynamic> json){
     recepieID = json['recipes_id'];
@@ -105,6 +107,7 @@ class LocalRecepie {
     description = json['recipe_description'].toString();
     imgUrl = json['recipe_img_url'].toString();
     categoryId = json['category_id'];
+    createdDate = json['createdAt'];
   }
 
   Map<String, dynamic> toJson() {
@@ -114,6 +117,8 @@ class LocalRecepie {
     _data['recipe_description'] = description;
     _data['recipe_img_url'] = imgUrl;
     _data['category_id'] = categoryId;
+    _data['createdAt'] = createdDate;
+
     return _data;
   }
 }

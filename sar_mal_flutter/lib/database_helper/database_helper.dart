@@ -79,7 +79,7 @@ class DatabaseHelper {
   // Read all recipes
   static Future<List<Map<String, dynamic>>> getRecepies() async {
     final db = await DatabaseHelper.db();
-    return db.query('recipes', orderBy: "id");
+    return db.query('recipes', orderBy: "id DESC");
   }
 
   // Get a single recipes by id

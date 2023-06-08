@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../constant/util.dart';
 import '../database_helper/database_helper.dart';
-import '../database_helper/db.dart';
 import '../model/data_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,7 +11,6 @@ import 'package:http/http.dart' as http;
 class DataProvider extends ChangeNotifier{
 
 
-  MyDb mydb = new MyDb(); //mydb new object from db.dart
   List<DataModel> dataModel = [];
   bool dataReturnStatus = false;
   bool categoryReturnStatus = false;

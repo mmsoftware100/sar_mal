@@ -9,10 +9,11 @@ import 'package:sar_mal_flutter/view/pages/selected_category_data_page.dart';
 
 import '../../constant/util.dart';
 import '../../database_helper/database_helper.dart';
-import '../../database_helper/db.dart';
 import '../../model/data_model.dart';
 import '../../provider/data_provider.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+
+import '../widgets/skeleton.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -231,10 +232,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        placeholder: (context, url) => Padding(
-          padding: const EdgeInsets.all(100.0),
-          child: Center(child: CircularProgressIndicator()),
-        ),
+        placeholder: (context, url) => Skeleton(),
         errorWidget: (context, url, error) => Icon(Icons.error),
       ),
     );
