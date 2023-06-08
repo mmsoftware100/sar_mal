@@ -121,10 +121,7 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ),
                 ),
-                placeholder: (context, url) => Padding(
-                  padding: const EdgeInsets.all(100.0),
-                  child: Center(child: Skeleton()),
-                ),
+                placeholder: (context, url) => Skeleton(),
                 errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),

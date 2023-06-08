@@ -2,6 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/data_model.dart';
+import '../widgets/my_oriantation_detail_view_widget.dart';
 import '../widgets/trending_item.dart';
 import 'detail_page.dart';
 
@@ -18,6 +19,13 @@ class SelectedCategoryPage extends StatefulWidget {
 
 class _SelectedCategoryPageState extends State<SelectedCategoryPage> {
 
+  LocalRecepie mylocalRecepie = LocalRecepie(recepieID: 0, title: '', description: '', imgUrl: '', categoryId: 0, createdDate: '');
+
+  recePieChange(LocalRecepie recepie){
+    setState(() {
+      mylocalRecepie = recepie;
+    });
+  }
   @override
   void initState() {
     // TODO: implement initState
@@ -49,16 +57,40 @@ class _SelectedCategoryPageState extends State<SelectedCategoryPage> {
         backgroundColor: Colors.orange,
         title: Text(widget.categoryName),
       ),
-      body: ListView(
+      body: MediaQuery.of(context).orientation == Orientation.portrait ?  ListView(
         physics: BouncingScrollPhysics(),
         children: widget.recepieDataModel.map((e) {
-          return e.categoryId == widget.categoryID ? InkWell(
+          return e.categoryId != widget.categoryID ? Container() : InkWell(
               child:  TrendingItem(img: e.imgUrl,title: e.title,description: e.description,rating: "5",cratedDate: e.createdDate,) ,
             onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailPage(localRecepie: e)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailPage(localRecepie: e)));
             },
-          ): Container();
+          )  ;
         }).toList(),
+      ):
+      Row(
+          children:[
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.height/1.5,
+              child: ListView(
+                physics: BouncingScrollPhysics(),
+                children: widget.recepieDataModel.map((e) {
+                  return e.categoryId != widget.categoryID ? Container() : InkWell(
+                    child:  TrendingItem(img: e.imgUrl,title: e.title,description: e.description,rating: "5",cratedDate: e.createdDate,) ,
+                    onTap: (){
+                      recePieChange(e);
+                    },
+                  )  ;
+                }).toList(),
+              ),
+            ),
+            Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width-MediaQuery.of(context).size.height/1.4,
+                child: MyOriantationDetailViewWidget(myOriantationlocalRecepie: mylocalRecepie,))
+            // Text("Hello")
+          ]
       ),
     );
   }

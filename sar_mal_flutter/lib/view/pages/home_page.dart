@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(10.0),
         child: GridView.count(
             physics: BouncingScrollPhysics(),
-            crossAxisCount: 2,
+            crossAxisCount: MediaQuery.of(context).orientation == Orientation.portrait ? 2 : 4,
             children: Provider.of<DataProvider>(context,listen: true).lDBcategories.map(
                     (e) => InkWell(
                       child: Container(
