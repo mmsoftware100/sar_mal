@@ -50,6 +50,7 @@ class _SelectedCategoryPageState extends State<SelectedCategoryPage> {
         title: Text(widget.categoryName),
       ),
       body: ListView(
+        physics: BouncingScrollPhysics(),
         children: widget.recepieDataModel.map((e) {
           return e.categoryId == widget.categoryID ? InkWell(
               child:  TrendingItem(img: e.imgUrl,title: e.title,description: e.description,rating: "5",) ,

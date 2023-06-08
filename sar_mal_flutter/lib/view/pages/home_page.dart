@@ -36,68 +36,7 @@ class _HomePageState extends State<HomePage> {
     Colors.purple,
   ];
 
-
-   // All categories
-   List<LocalCategory> _categories = [];
-
-   // All recepies
-   List<LocalRecepie> _recepies = [];
-
    bool _isLoading = true;
-   bool _isLoadingRecepies = true;
-
-   // This function is used to fetch all data from the database
-   void _selectAllCategoriesFromDB() async {
-     final data = await DatabaseHelper.getCategories();
-     _categories.clear();
-     setState(() {
-       // _categories = data;
-
-       for(int i = 0; i < data.length; i++){
-         try{
-           _categories.add(LocalCategory.fromJson(data[i]));
-           print("Hii "+i.toString());
-         }
-         catch(ex){
-           print("Himm");
-           // rethrow;
-         }
-       }
-       _isLoading = false;
-     });
-
-     _categories.map((e) {
-       print(e.categoryID);
-     }).toList();
-   }
-
-   // This function is used to fetch all data from the database
-   void _selectAllRecepiesFromDB() async {
-     final dataRecepies = await DatabaseHelper.getRecepies();
-     print(dataRecepies);
-     _recepies.clear();
-     setState(() {
-
-       for(int i = 0; i < dataRecepies.length; i++){
-         try{
-           _recepies.add(LocalRecepie.fromJson(dataRecepies[i]));
-           print("Hii _recepies  "+i.toString());
-           print(_recepies);
-         }
-         catch(ex){
-           print("Himm _recepies ");
-           // rethrow;
-         }
-       }
-       _isLoadingRecepies = false;
-     });
-
-
-
-     _recepies.map((e) {
-       print("_recepies title "+e.title);
-     }).toList();
-   }
 
   AndroidNotificationChannel channel = AndroidNotificationChannel(
       'high_importance_channel_martin', // id
@@ -234,6 +173,7 @@ class _HomePageState extends State<HomePage> {
       Padding(
         padding: const EdgeInsets.all(10.0),
         child: GridView.count(
+            physics: BouncingScrollPhysics(),
             crossAxisCount: 2,
             children: Provider.of<DataProvider>(context,listen: true).lDBcategories.map(
                     (e) => InkWell(
@@ -243,25 +183,25 @@ class _HomePageState extends State<HomePage> {
                           shape: roundedRectangle12,
                           child: Stack(
                             children: <Widget>[
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  buildImage(e),
-                                  // buildTitle(e),
-                                  // buildRating(e),
-                                  // buildPriceInfo(),
-                                ],
-                              ),
+                              buildImage(e),
                               Align(
-                                alignment: Alignment.topRight,
+                                alignment: Alignment.center,
                                 child: Container(
                                   padding: EdgeInsets.all(4),
                                   decoration: BoxDecoration(
-                                    color: mainColor,
-                                    borderRadius: BorderRadius.only(topRight: Radius.circular(12)),
+                                    color: Colors.black12,
+                                    borderRadius: BorderRadius.all(Radius.circular(12)),
                                   ),
-                                  child: Text(e.categoryName),
+                                  child: Center(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(e.categoryName,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                        Text(Provider.of<DataProvider>(context,listen: false).lDBrecepies.where((element) => element.categoryId == e.categoryID).toList().length.toString()+" မျိုး" ,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+
+                                      ],
+                                    ),
+                                  )
                                 ),
                               )
                             ],
@@ -278,31 +218,24 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget buildImage(LocalCategory food) {
-    return Container(
-      height: MediaQuery.of(context).size.width / 2.5,
-      child: ClipRRect(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
-        // child: Image.network(
-        //   food.categoryImgUrl,
-        //   fit: BoxFit.cover,
-        // ),
-        child: CachedNetworkImage(
-          imageUrl: food.categoryImgUrl,
-          imageBuilder: (context, imageProvider) => Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: imageProvider,
-                  fit: BoxFit.cover,
-                  //colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn)
-              ),
+    return ClipRRect(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(12),bottom: Radius.circular(12)),
+      child: CachedNetworkImage(
+        imageUrl: food.categoryImgUrl,
+        imageBuilder: (context, imageProvider) => Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: imageProvider,
+                fit: BoxFit.cover,
+                //colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn)
             ),
           ),
-          placeholder: (context, url) => Padding(
-            padding: const EdgeInsets.all(100.0),
-            child: Center(child: CircularProgressIndicator()),
-          ),
-          errorWidget: (context, url, error) => Icon(Icons.error),
         ),
+        placeholder: (context, url) => Padding(
+          padding: const EdgeInsets.all(100.0),
+          child: Center(child: CircularProgressIndicator()),
+        ),
+        errorWidget: (context, url, error) => Icon(Icons.error),
       ),
     );
   }

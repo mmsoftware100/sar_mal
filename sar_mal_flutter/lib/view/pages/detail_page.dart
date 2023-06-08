@@ -34,6 +34,7 @@ class _DetailPageState extends State<DetailPage> {
         title: Text(widget.localRecepie.title),
       ),
       body: ListView(
+        physics: BouncingScrollPhysics(),
         children: [
           Container(
             height: MediaQuery.of(context).size.height / 3.5,
@@ -67,7 +68,7 @@ class _DetailPageState extends State<DetailPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(18.0),
             child: Text(
               widget.localRecepie.title,
               style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),
@@ -75,7 +76,7 @@ class _DetailPageState extends State<DetailPage> {
           ),
           Divider(),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(18.0),
             child: Text(
               widget.localRecepie.description,
               style: TextStyle(fontSize: 20,),
