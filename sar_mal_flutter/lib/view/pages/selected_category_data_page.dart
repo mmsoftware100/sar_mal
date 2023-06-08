@@ -1,7 +1,9 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../model/data_model.dart';
+import '../../provider/data_provider.dart';
 import '../widgets/my_oriantation_detail_view_widget.dart';
 import '../widgets/trending_item.dart';
 import 'detail_page.dart';
@@ -19,7 +21,7 @@ class SelectedCategoryPage extends StatefulWidget {
 
 class _SelectedCategoryPageState extends State<SelectedCategoryPage> {
 
-  LocalRecepie mylocalRecepie = LocalRecepie(recepieID: 0, title: '', description: '', imgUrl: '', categoryId: 0, createdDate: '');
+  late LocalRecepie mylocalRecepie;
 
   recePieChange(LocalRecepie recepie){
     setState(() {
@@ -29,6 +31,8 @@ class _SelectedCategoryPageState extends State<SelectedCategoryPage> {
   @override
   void initState() {
     // TODO: implement initState
+    mylocalRecepie = Provider.of<DataProvider>(context,listen: false).lDBrecepies.where((element) => element.categoryId == widget.categoryID).toList()[0];
+
     super.initState();
     widget.recepieDataModel.map((e) {
       print(e.recepieID.toString()+" list ");
