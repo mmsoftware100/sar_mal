@@ -116,7 +116,7 @@ class _DetailPageState extends State<DetailPage> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: imageProvider,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                       //colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn)
                     ),
                   ),

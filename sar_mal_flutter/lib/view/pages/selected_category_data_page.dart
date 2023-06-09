@@ -76,7 +76,7 @@ class _SelectedCategoryPageState extends State<SelectedCategoryPage> {
           children:[
             Container(
               height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.height/1.5,
+              width: MediaQuery.of(context).size.width *0.3,
               child: ListView(
                 physics: BouncingScrollPhysics(),
                 children: widget.recepieDataModel.map((e) {
@@ -91,7 +91,7 @@ class _SelectedCategoryPageState extends State<SelectedCategoryPage> {
             ),
             Container(
                 height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width-MediaQuery.of(context).size.height/1.4,
+                width: MediaQuery.of(context).size.width * 0.7,
                 child: MyOriantationDetailViewWidget(myOriantationlocalRecepie: mylocalRecepie,))
             // Text("Hello")
           ]
